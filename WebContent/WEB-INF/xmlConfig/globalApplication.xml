@@ -30,6 +30,6 @@
     <!-- ====================================================================================== -->
     <!-- 启用基于注解（Annotation-based）的配置 -->
     <!-- ====================================================================================== -->
-    <context:component-scan base-package="cn.com.index"/>
+    <context:component-scan base-package="cn.com.index,cn.com.common"/>
 
 </beans>
