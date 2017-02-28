@@ -59,7 +59,7 @@
     
     <bean id="mybatisSqlSessionConfig" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="druidDataSource"></property>
-        <property name="configLocation" value="/WEB-INF/config/mybatisConfig.xml"></property>
+        <property name="configLocation" value="/WEB-INF/xmlConfig/mybatisConfig.xml"></property>
         <property name="mapperLocations" value="classpath:cn/com/**/*Mapper.xml"></property>
     </bean>
     <bean id="mybatisSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
