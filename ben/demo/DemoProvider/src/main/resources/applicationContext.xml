@@ -1,33 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
-           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
-           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-           http://code.alibabatech.com/schema/dubbo  
-           http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
-       default-init-method="init"
-       default-destroy-method="destroy">
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 注解扫描 -->
-    <!--<context:annotation-config/>-->
-    <!--<aop:aspectj-autoproxy/>-->
-    <!--<context:component-scan base-package="cn.ben"/>-->
+    <context:component-scan base-package="cn.ben.entry"/>
+    <context:annotation-config/>
 
     <!-- 读入配置文件 -->
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:config/application.properties</value>
-                <value>classpath:config/log4j.properties</value>
+                <value>classpath*:config/application.properties</value>
+                <value>classpath*:log4j.properties</value>
             </list>
         </property>
-        <property name="fileEncoding" value="utf-8"/>
+        <property name="fileEncoding" value="UTF-8"/>
     </bean>
+
+
+    <!--<aop:aspectj-autoproxy/>-->
+
 
     <!--自定义数据源-->
     <!--<bean id="dataSource_db" class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -81,24 +78,25 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>-->
 
+    <import resource="classpath*:config/dubboProvider.xml"/>
     <!-- 提供方应用信息，用于计算依赖关系，不要与消费方一样 -->
-    <dubbo:application name="demo-provider"/>
+    <!--<dubbo:application name="demo-provider"/>-->
 
     <!-- 注册地址 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" check="false"/>
+    <!--<dubbo:registry address="zookeeper://127.0.0.1:2181" check="false"/>-->
 
     <!-- 用dubbo协议在20880端口暴露服务 ，注意不能与其他服务端口相同  -->
-    <dubbo:protocol name="dubbo" port="7630"/>
+    <!--<dubbo:protocol name="dubbo" port="7630"/>-->
 
     <!-- 从注册中心发现监控中心地址，否则直连监控中心 -->
-    <dubbo:monitor protocol="registry"/>
+    <!--<dubbo:monitor protocol="registry"/>-->
 
     <!-- 服务提供方的参数设定 -->
     <!--<dubbo:provider connections="${dubbo.provider.connections}" timeout="${dubbo.provider.timeout}" retries="0"/>-->
 
     <!-- 服务消费放方的参数设定 -->
-    <dubbo:consumer check="false"/>
+    <!--<dubbo:consumer check="false"/>-->
 
     <!-- 注解方式扫描dubbo服务 -->
-    <dubbo:annotation package="cn.ben.entry"/>
+    <!--<dubbo:annotation package="cn.ben.entry"/>-->
 </beans>
