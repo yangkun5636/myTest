@@ -1,29 +1,23 @@
 package com.alibaba.excel.read.v07;
 
-import java.util.Arrays;
-import java.util.List;
-
 import com.alibaba.excel.annotation.FieldType;
-import com.alibaba.excel.util.ExcelXmlConstants;
 import com.alibaba.excel.read.context.AnalysisContext;
 import com.alibaba.excel.read.event.AnalysisEventRegisterCenter;
 import com.alibaba.excel.read.event.OneRowAnalysisFinishEvent;
+import com.alibaba.excel.util.ExcelXmlConstants;
 import com.alibaba.excel.util.PositionUtils;
-
 import org.apache.poi.xssf.model.SharedStringsTable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import static com.alibaba.excel.util.ExcelXmlConstants.CELL_VALUE_TAG;
-import static com.alibaba.excel.util.ExcelXmlConstants.CELL_VALUE_TAG_1;
-import static com.alibaba.excel.util.ExcelXmlConstants.DIMENSION;
-import static com.alibaba.excel.util.ExcelXmlConstants.DIMENSION_REF;
-import static com.alibaba.excel.util.ExcelXmlConstants.ROW_TAG;
+import java.util.Arrays;
+import java.util.List;
+
+import static com.alibaba.excel.util.ExcelXmlConstants.*;
 
 /**
  * @author jipengfei
- *
  */
 public class RowHandler extends DefaultHandler {
 
@@ -101,7 +95,7 @@ public class RowHandler extends DefaultHandler {
     private void endCellValue(String name) throws SAXException {
         // ensure size
         if (curCol >= curRowContent.length) {
-            curRowContent = Arrays.copyOf(curRowContent, (int)(curCol * 1.5));
+            curRowContent = Arrays.copyOf(curRowContent, (int) (curCol * 1.5));
         }
         if (CELL_VALUE_TAG.equals(name)) {
 
@@ -154,6 +148,7 @@ public class RowHandler extends DefaultHandler {
             curRowContent = new String[20];
         }
     }
+
 
 }
 

@@ -79,6 +79,7 @@ public class ExcelHeadProperty {
             excelHeadProperty.setHead(Arrays.asList(p.value()));
             excelHeadProperty.setIndex(p.index());
             excelHeadProperty.setFormat(p.format());
+            excelHeadProperty.setMoney(p.money());
             excelColumnPropertyMap1.put(p.index(), excelHeadProperty);
         } else {
             ExcelColumnNum columnNum = f.getAnnotation(ExcelColumnNum.class);

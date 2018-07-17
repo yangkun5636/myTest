@@ -28,6 +28,7 @@ public class ExcelColumnProperty implements Comparable<ExcelColumnProperty> {
      * 日期类型format 如："yyyy-MM-dd HH:mm:ss"
      */
     private String format;
+    private boolean money;
 
     public String getFormat() {
         return format;
@@ -65,5 +66,13 @@ public class ExcelColumnProperty implements Comparable<ExcelColumnProperty> {
         int x = this.index;
         int y = o.getIndex();
         return (x < y) ? -1 : ((x == y) ? 0 : 1);
+    }
+
+    public void setMoney(boolean money) {
+        this.money = money;
+    }
+
+    public boolean isMoney() {
+        return money;
     }
 }

@@ -35,4 +35,6 @@ public @interface ExcelProperty {
       * @return 日期格式化
       */
      String format() default "";
+
+     boolean money() default false;
 }
