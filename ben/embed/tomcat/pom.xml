@@ -12,29 +12,25 @@
     <artifactId>tomcat</artifactId>
     <description>tomcat容器</description>
     <properties>
-        <tomcat.version>9.0.7</tomcat.version>
+        <tomcat.version>8.5.5</tomcat.version>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-util -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-util</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-servlet-api</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-juli -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-juli</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jsp-api</artifactId>
@@ -50,7 +46,7 @@
             <artifactId>tomcat-jasper-el</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- -->
+        &lt;!&ndash; &ndash;&gt;
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jasper</artifactId>
@@ -86,8 +82,6 @@
             <artifactId>tomcat-coyote</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- tomcat.version must be greater than 8.*.* <dependency> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-jni</artifactId>
-            <version>${tomcat.version}</version> </dependency> -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-api</artifactId>
@@ -112,7 +106,7 @@
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-catalina-ant</artifactId>
             <version>${tomcat.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
@@ -120,7 +114,17 @@
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-el</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
     </dependencies>
