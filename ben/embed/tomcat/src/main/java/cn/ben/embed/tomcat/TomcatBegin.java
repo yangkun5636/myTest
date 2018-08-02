@@ -1,3 +1,5 @@
+package cn.ben.embed.tomcat;
+
 import org.apache.catalina.*;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.core.StandardContext;
@@ -7,7 +9,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.VersionLoggerListener;
 import org.apache.catalina.valves.AccessLogValve;
 import org.apache.tomcat.util.descriptor.web.ErrorPage;
-import servlet.TestServlet;
+import cn.ben.embed.tomcat.servlet.TestServlet;
 
 import javax.servlet.ServletException;
 import java.io.File;

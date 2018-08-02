@@ -1,4 +1,4 @@
-package servlet;
+package cn.ben.embed.tomcat.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

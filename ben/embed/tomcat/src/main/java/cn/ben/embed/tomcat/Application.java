@@ -1,3 +1,5 @@
+package cn.ben.embed.tomcat;
+
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Server;
@@ -9,7 +11,7 @@ import org.apache.catalina.startup.ContextConfig;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.coyote.http11.Http11NioProtocol;
 import org.apache.tomcat.util.scan.StandardJarScanner;
-import servlet.TestServlet;
+import cn.ben.embed.tomcat.servlet.TestServlet;
 
 import javax.servlet.ServletException;
 import java.io.File;
@@ -27,7 +29,7 @@ public class Application {
         tomcat1();
     }
 
-    public static void tomcat1() throws LifecycleException {
+    public static void tomcat1() throws Exception {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
         tomcat.setBaseDir("e:/tmp/tomcat1");

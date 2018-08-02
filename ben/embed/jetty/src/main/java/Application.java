@@ -20,6 +20,7 @@ public class Application {
         Server server = new Server(8080); // 服务器
         ResourceHandler handler = new ResourceHandler(); // 处理器
         handler.setResourceBase("d:/jetty");
+        handler.setAcceptRanges(false);
         server.setHandler(handler);
 //        ServerConnector connector = new ServerConnector(server); // 连接
 //        connector.setPort(8080);

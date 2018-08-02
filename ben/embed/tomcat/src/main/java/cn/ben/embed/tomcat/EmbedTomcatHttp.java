@@ -1,6 +1,8 @@
+package cn.ben.embed.tomcat;
+
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
-import servlet.TestServlet;
+import cn.ben.embed.tomcat.servlet.TestServlet;
 
 /**
  * @TIME 2018/7/19 13:06
