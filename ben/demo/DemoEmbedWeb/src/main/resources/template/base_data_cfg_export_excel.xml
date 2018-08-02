@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excels>
+
+    <excel id="hospOrgExcel" class="model.HospOrgExcelModel" enableStyle="true"
+           defaultAlign="center" sheetIndex="0" defaultColumnWidth="4000">
+        <field name="innerCode" title="平台唯一识别码" isNull="false"/>
+        <field name="outterCode" title="医疗机构代码"/>
+        <field name="HChineseName" title="医疗机构名称" uniformStyle="true"/>
+        <!--<field name="englishName" title="英文名称"/>-->
+        <!--<field name="province" title="省"/>-->
+        <!--<field name="city" title="市"/>-->
+        <!--<field name="area" title="区"/>-->
+        <!--<field name="hospitalCAddress" title="地址"/>-->
+        <field name="hospitalLevel" title="医疗机构等级" format="01:一级,02:二级,03:三级"/>
+        <field name="grade" title="评分等级" format="0:特级,1:甲,2:乙,3:丙"/>
+
+        <field name="directPayType" title="直赔标志" format="0:是,1:否" defaultValue="是" isNull="false"/>
+        <field name="contractFlag" title="自动续约标志" format="0:是,1:否" defaultValue="是" isNull="false"/>
+        <field name="startDate" title="开始日期" />
+        <field name="endDate" title="结束日期" />
+        <field name="signDate" title="签订日期" />
+        <field name="effectDate" title="生效日期" />
+    </excel>
+
+    <excel id="insuExcel" class="model.InsuExcelModel" enableStyle="true"
+           defaultAlign="center" sheetIndex="0" defaultColumnWidth="4000">
+        <field name="number" title="*序号" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="chName" title="*姓名" titleFountColor="red" bold="true" titleBgColor="GREY_25_PERCENT" />
+        <field name="sex" title="*性别" titleFountColor="red" format="0:未知,1:男,2:女" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="cardType" title="*证件类型" titleFountColor="red" bold="true"
+               format="0:其他证件类型,1:身份证,2:军人证,3:护照" titleBgColor="GREY_25_PERCENT"/>
+        <field name="cardNo" title="*证件号" titleFountColor="red" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="birth" title="出生日期"  bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="insuAge" title="入保年龄" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="tel" title="联系电话" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="phone" title="手机" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="email" title="邮箱" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="fex" title="传真" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="national" title="国籍" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="province" title="省"  bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="city" title="市" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="area" title="区" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="address" title="详细地址" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="bankName" title="银行名称"  bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="clientBankAcc" title="银行账号" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="startDate" title="*开始日期" titleFountColor="red" bold="true" titleBgColor="GREY_25_PERCENT"/>
+        <field name="endDate" title="*结束日期" titleFountColor="red" bold="true" titleBgColor="GREY_25_PERCENT"/>
+    </excel>
+
+
+
+    <excel id="policyImportBatchExcel" class="model.PolicyImportBatchExcelModel" enableStyle="true"
+           defaultAlign="center" sheetIndex="0" defaultColumnWidth="4000">
+        <field name="chName" title="姓名"/>
+        <field name="sex" title="性别" />
+        <field name="birth" title="出生日期"/>
+        <field name="cardType" title="证件类型" />
+        <field name="cardNo" title="证件号"/>
+        <field name="insuAge" title="入保年龄"/>
+        <field name="tel" title="联系电话"/>
+        <field name="phone" title="手机"/>
+        <field name="email" title="邮箱"/>
+        <field name="fex" title="传真"/>
+        <field name="national" title="国籍"/>
+        <field name="province" title="省"/>
+        <field name="city" title="市"/>
+        <field name="area" title="区"/>
+        <field name="address" title="详细地址"/>
+        <field name="bankCode" title="开户行"/>
+        <field name="clientBankAcc" title="卡号"/>
+        <field name="startDate" title="开始日期"/>
+        <field name="endDate" title="结束日期"/>
+        <field name="btachType" title="操作类型"/>
+    </excel>
+
+
+</excels>
