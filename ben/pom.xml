@@ -20,6 +20,14 @@
         <tomcat.version>8.5.5</tomcat.version>
         <jetty-version>9.4.6.v20170531</jetty-version>
     </properties>
+	
+	<modules>
+        <module>basic</module>
+        <module>common</module>
+        <module>demo</module>
+        <module>embed</module>
+        <module>test</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
