@@ -27,6 +27,7 @@
         <module>demo</module>
         <module>embed</module>
         <module>test</module>
+        <module>shiroResteasyWebApp</module>
     </modules>
 
     <dependencyManagement>
