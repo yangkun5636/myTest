@@ -22,7 +22,7 @@ import java.util.Properties;
 public class KafkaUtils {
     private final static Logger LOGGER = LoggerFactory.getLogger(KafkaUtils.class);
     private static final String TOPIC_NAME = "test";
-    private static final String BOOTSTRAP_SERVERS = "192.168.16.92:9092";
+    private static final String BOOTSTRAP_SERVERS = "192.168.16.132:9092";
     private static Producer<String, String> producer;
     private static Consumer<String, String> consumer;
 

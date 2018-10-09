@@ -16,21 +16,23 @@
         <spring-version>4.3.14.RELEASE</spring-version>
         <dubbo-version>2.5.10</dubbo-version>
         <zookeeper-version>3.4.10</zookeeper-version>
+        <zkclient-version>0.10</zkclient-version>
 
         <tomcat.version>8.5.5</tomcat.version>
         <jetty-version>9.4.6.v20170531</jetty-version>
+        <servlet-api-version>3.1.0</servlet-api-version>
     </properties>
 	
 	<modules>
-        <module>basic</module>
         <module>common</module>
         <module>demo</module>
         <module>embed</module>
         <module>test</module>
         <module>shiroResteasyWebApp</module>
+        <module>webApp</module>
     </modules>
 
-    <dependencyManagement>
+    <!--<dependencyManagement>
         <dependencies>
 
             <dependency>
@@ -57,7 +59,7 @@
                 <version>2.2</version>
             </dependency>
 
-            <!-- spring -->
+            &lt;!&ndash; spring &ndash;&gt;
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
@@ -115,7 +117,7 @@
                 <version>0.10</version>
             </dependency>
 
-            <!-- embed tomcat -->
+            &lt;!&ndash; embed tomcat &ndash;&gt;
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-core</artifactId>
@@ -139,7 +141,7 @@
 
 
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement>-->
 
     <build>
         <resources>
