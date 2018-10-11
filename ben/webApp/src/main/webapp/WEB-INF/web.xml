@@ -8,7 +8,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/xmlConfig/application.xml</param-value>
+        <param-value>classpath:xmlConfig/applicationConfig.xml</param-value>
     </context-param>
 
     <listener>
@@ -19,6 +19,10 @@
     <servlet>
         <servlet-name>SpringMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:xmlConfig/webConfig.xml</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
