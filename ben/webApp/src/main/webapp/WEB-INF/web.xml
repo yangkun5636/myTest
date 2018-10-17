@@ -26,7 +26,17 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>/*.html</url-pattern>
         <url-pattern>/web/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RestServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RestServlet</servlet-name>
+        <url-pattern>/*.json</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
