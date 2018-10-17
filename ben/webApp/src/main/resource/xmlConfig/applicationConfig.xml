@@ -30,7 +30,7 @@
     </bean>
 
     <bean id="dataSource" class="com.xuan.util.dataSource.DynamicDataSource">
-        <property name="dataSourceLookup" ref=""/>
+        <!--<property name="dataSourceLookup" ref=""/>-->
         <property name="targetDataSources">
             <map key-type="java.lang.String" value-type="java.lang.String">
                 <entry key="druidDataSource" value="druidDataSource"/>
