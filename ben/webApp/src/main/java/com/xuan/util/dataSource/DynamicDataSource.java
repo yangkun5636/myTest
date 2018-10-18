@@ -13,37 +13,37 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
 
     @Override
     protected Object determineCurrentLookupKey() {
-        logger.log(Level.ALL,"determineCurrentLookupKey");
-        return null;
+        logger.log(Level.ALL, "determineCurrentLookupKey");
+        return DataSourceHolder.getDataSource();
     }
 
     @Override
     public void afterPropertiesSet() {
-        logger.log(Level.ALL,"afterPropertiesSet");
+        logger.log(Level.ALL, "afterPropertiesSet");
         super.afterPropertiesSet();
     }
 
     @Override
     public Connection getConnection(String username, String password) throws SQLException {
-        logger.log(Level.ALL,"getConnection");
+        logger.log(Level.ALL, "getConnection");
         return super.getConnection(username, password);
     }
 
     @Override
     public int getLoginTimeout() throws SQLException {
-        logger.log(Level.ALL,"getLoginTimeout");
+        logger.log(Level.ALL, "getLoginTimeout");
         return super.getLoginTimeout();
     }
 
     @Override
     public PrintWriter getLogWriter() {
-        logger.log(Level.ALL,"getLogWriter");
+        logger.log(Level.ALL, "getLogWriter");
         return super.getLogWriter();
     }
 
     @Override
     public Logger getParentLogger() {
-        logger.log(Level.ALL,"getParentLogger");
+        logger.log(Level.ALL, "getParentLogger");
         return super.getParentLogger();
     }
 }

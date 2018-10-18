@@ -1,4 +1,4 @@
-package com.xuan.dao;
+package com.xuan.dao.mapper;
 
 public interface TestDao {
 }

@@ -3,7 +3,7 @@ package com.xuan.util.dataSource;
 public class DataSourceHolder {
     private static final ThreadLocal<String> contextHolder = new ThreadLocal<>();
 
-    public static void setDataSource(String key) {
+    public static void putDataSource(String key) {
         contextHolder.set(key);
     }
 
