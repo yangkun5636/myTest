@@ -10,7 +10,9 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--容器自动扫描IOC组件 -->
-    <context:component-scan base-package="com.xuan"/>
+    <context:component-scan base-package="com.xuan">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <context:annotation-config/>
 
@@ -86,7 +88,7 @@
         <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 指定要自动扫描接口的基础包，实现接口 -->
-        <property name="basePackage" value="com.xuan.dao.**.mapper"/>
+        <property name="basePackage" value="com.xuan.dao.mapper"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -98,4 +100,27 @@
     <!--7 aspectj支持自动代理实现AOP功能 -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
+    <!-- 面向切面配置 -->
+    <!--<aop:config>-->
+        <!-- 定义切入点 -->
+        <!--<aop:pointcut expression="execution(* com.xuan..*.*(..) )" id="pointCut"/>-->
+        <!-- pointcut和advice的配置器。是将advice注入程序中pointcut位置的代码 -->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pointCut"/>-->
+    <!--</aop:config>-->
+
+    <!-- 定义哪些方法需要事物支持 -->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!-- 传播行为 -->
+            <!--<tx:method name="save*" propagation="REQUIRED" />-->
+            <!--<tx:method name="insert*" propagation="REQUIRED" />-->
+            <!--<tx:method name="add*" propagation="REQUIRED" />-->
+            <!--<tx:method name="create*" propagation="REQUIRED" />-->
+            <!--<tx:method name="delete*" propagation="REQUIRED" />-->
+            <!--<tx:method name="update*" propagation="REQUIRED" />-->
+            <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true" />-->
+            <!--<tx:method name="select*" propagation="SUPPORTS" read-only="true" />-->
+            <!--<tx:method name="get*" propagation="SUPPORTS" read-only="true" />-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
 </beans>

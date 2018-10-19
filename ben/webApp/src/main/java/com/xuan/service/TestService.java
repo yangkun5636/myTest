@@ -1,4 +1,5 @@
 package com.xuan.service;
 
-public class TestService {
+public interface TestService {
+    String  test();
 }
