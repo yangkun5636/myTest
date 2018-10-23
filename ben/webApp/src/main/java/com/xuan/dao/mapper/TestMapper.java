@@ -9,7 +9,7 @@ import java.util.Map;
 public interface TestMapper {
 
     @DataSource("master")
-    User test(Map<String, Object> param);
+    Map<String, Object> test(Map<String, Object> param);
 
     @DataSource("slave")
     List<User> listAll(Map<String, Object> param);

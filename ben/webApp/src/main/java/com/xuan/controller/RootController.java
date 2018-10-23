@@ -7,6 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/")
@@ -21,10 +25,11 @@ public class RootController {
         return "index";
     }
 
+
     @ResponseBody
     @RequestMapping("test")
-    public JSONObject test() {
+    public String test(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
         String test = testService.test();
-        return JSONObject.parseObject(test);
+        return test;
     }
 }

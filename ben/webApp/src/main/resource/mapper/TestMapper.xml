@@ -4,7 +4,10 @@
 
 <mapper namespace="com.xuan.dao.mapper.TestMapper">
 
-    <select id="test" parameterType="java.util.Map" resultType="User">
-        SELECT  * FROM user
+    <select id="test" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT id,name FROM user
+    </select>
+    <select id="listAll" resultType="com.xuan.dao.entity.User">
+        SELECT * FROM user
     </select>
 </mapper>

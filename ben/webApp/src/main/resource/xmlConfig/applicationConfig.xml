@@ -9,6 +9,9 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+
+    <context:property-placeholder location="classpath:properties/*.properties" file-encoding="UTF-8"/>
+
     <!--容器自动扫描IOC组件 -->
     <context:component-scan base-package="com.xuan">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -17,7 +20,7 @@
     <context:annotation-config/>
 
     <!--1 引入属性文件，在配置中占位使用 -->
-    <context:property-placeholder file-encoding="UTF-8" location="classpath:properties/db.properties"/>
+    <!--<context:property-placeholder file-encoding="UTF-8" location="classpath:properties/db.properties"/>-->
 
     <!--2 定义数据源   -->
     <bean id="masterDataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -25,7 +28,7 @@
         <property name="url" value="${db.master.url}"/>
         <property name="username" value="${db.master.username}"/>
         <property name="password" value="${db.master.password}"/>
-        <!--
+
         <property name="filters" value="stat"/>
         <property name="maxActive" value="20"/>
         <property name="initialSize" value="1"/>
@@ -39,14 +42,14 @@
         <property name="testOnReturn" value="false"/>
         <property name="poolPreparedStatements" value="true"/>
         <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
-        -->
+
     </bean>
     <bean id="slaveDataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <property name="url" value="${db.slave.url}"/>
         <property name="username" value="${db.slave.username}"/>
         <property name="password" value="${db.slave.password}"/>
-        <!--
+
         <property name="filters" value="stat"/>
         <property name="maxActive" value="20"/>
         <property name="initialSize" value="1"/>
@@ -60,7 +63,7 @@
         <property name="testOnReturn" value="false"/>
         <property name="poolPreparedStatements" value="true"/>
         <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
-        -->
+
     </bean>
 
     <bean id="dataSource" class="com.xuan.util.dataSource.DynamicDataSource">
