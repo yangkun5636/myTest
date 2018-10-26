@@ -29,6 +29,14 @@
         <!--<url-pattern>/*.html</url-pattern>-->
         <url-pattern>/web/*</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/web/*</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>RestServlet</servlet-name>

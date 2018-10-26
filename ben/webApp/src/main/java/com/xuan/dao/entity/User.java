@@ -1,18 +1,16 @@
 package com.xuan.dao.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.alibaba.druid.support.monitor.annotation.MTable;
+import lombok.Data;
 
 import java.io.Serializable;
 
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Data
+@MTable(name = "")
 public class User implements Serializable {
     private int id;
     private String name;
+    private int age;
+    private String email;
 }

@@ -13,4 +13,5 @@ public interface TestMapper {
 
     @DataSource("slave")
     List<User> listAll(Map<String, Object> param);
+
 }

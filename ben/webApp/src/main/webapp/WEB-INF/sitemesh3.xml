@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <mapping path="/web/*" decorator="/WEB-INF/decorators/frontHeader.jsp"/>
+</sitemesh>
