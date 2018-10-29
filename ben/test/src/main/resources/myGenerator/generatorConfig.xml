@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- ojdbc6.jar已经直接放到项目中,无需指定了,同时mysql驱动包也一样,这里同样无需指定 -->
+    <!-- <classPathEntry location="ojdbc6.jar" /> -->
+
+    <context id="mysql22">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator type="cn.ben.test.myGenerator.MybatisGenerator">
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.16.132:3306/mytest" userId="root"
+                        password="root">
+        </jdbcConnection>
+        <javaTypeResolver type="DEFAULT">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.ben.test.vo" targetProject="src/main/java/cn/ben/test/vo">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="classpath:mapper" targetProject="src/main/resources/mapper">
+            <property name="enableSubPackages" value="false"/><!-- 同上 -->
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" implementationPackage="cn.ben.dao.mapper"
+                             targetPackage="cn.ben.test.mapper"
+                             targetProject="src/main/java/cn/ben/test/mapper">
+            <property name="enableSubPackages" value="false"/><!-- 同上 -->
+        </javaClientGenerator>
+
+        <table tableName="*"></table>
+    </context>
+
+    <context id="mysql11" defaultModelType="flat" targetRuntime="Mybatis3">
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <!--<property name="javaFileEncoding" value="UTF-8"/>-->
+        <!-- 这里的type里写的是你的实现类的类全路径 -->
+        <!--<commentGenerator type="cn.ben.test.myGenerator.MybatisGenerator">-->
+        <!--</commentGenerator>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.16.132:3306/mytest"
+                        userId="root" password="root">
+            <property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>
+        <javaTypeResolver type="DEFAULT">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.ben.test.vo" targetProject="src/main/java/cn/ben/test/vo">
+            <!-- 为true 会添加库名为包名 此处设为false -->
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="classpath:mapper" targetProject="C:\Users\Administrator\Desktop">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" implementationPackage="cn.ben.dao.mapper" targetPackage="dao"
+                             targetProject="C:\Users\Administrator\Desktop">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table schema="mytest" tableName="ABS_DEAL" domainObjectName="AbsDeal"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
