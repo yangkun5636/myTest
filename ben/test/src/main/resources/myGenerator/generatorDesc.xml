@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- properties 0个或1个  这个元素用来指定外部的属性元素-->
+    <!--元素用于指定一个需要在配置中解析使用的外部属性文件，引入属性文件后，可以在配置中使用 ${property}这种形式的引用，通过这种方式引用属性文件中的属性值。 对于后面需要配置的**jdbc信息**和targetProject属性会很有用-->
+    <!--这个属性可以通过resource或者url来指定属性文件的位置，这两个属性只能使用其中一个来指定，同时出现会报错-->
+    <!--resource：指定**classpath**下的属性文件，使用类似com/myproject/generatorConfig.properties这样的属性值-->
+    <!--url：可以指定文件系统上的特定位置，例如file:///C:/myfolder/generatorConfig.properties-->
+    <properties resource="" url=""/>
+
+    <!--classPathEntry 0个或1个 通过这个属性指定驱动的路径-->
+    <classPathEntry location=""/>
+
+    <!-- 需要有一个<context>元素  -->
+    <!--指定生成一组对象的环境-->
+    <!--defaultModelType 定义了MBG如何生成**实体类**  conditional(默认) ,flat(每一张表只生成一个实体类) ,hierarchical-->
+    <!--targetRuntime 指定生成的代码的运行时环境   MyBatis3(默认) ,MyBatis3Simple  ,Ibatis2Java2  ,Ibatis2Java5-->
+    <!--introspectedColumnImpl 指定扩展org.mybatis.generator.api.IntrospectedColumn 的实现类-->
+    <!--如果你希望不生成和Example查询有关的内容，那么可以按照如下进行配置:
+        <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        使用MyBatis3Simple可以避免在后面的<table>中逐个进行配置（后面会提到）-->
+    <context id="demo" defaultModelType="" targetRuntime="" introspectedColumnImpl="">
+        <!--property 支持的属性 autoDelimitKeywords,beginningDelimiter ,endingDelimiter,javaFileEncoding,javaFormatter,xmlFormatte-->
+        <!--autoDelimitKeywords 当表名或者字段名为SQL关键字的时候，可以设置该属性为true，MBG会自动给表名或字段名添加**分隔符**-->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="'"/>
+        <property name="endingDelimiter" value="'"/>
+        <!--javaFileEncoding 设置要使用的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--javaFormatter和xmlFormatter 如果你想使用模板来定制生成的java文件和xml文件的样式，你可以通过指定这两个属性的值来实现-->
+
+        <!--plugin 该元素可以配置0个或者多个 用来定义一个插件 插件将按在配置中配置的顺序执行-->
+        <plugin type=""/>
+
+        <!--commentGenerator 该元素最多可以配置1个 -->
+        <!--该元素有一个可选属性type,可以指定用户的实现类 ,该类需要实现org.mybatis.generator.api.CommentGenerator接口。
+            而且必有一个默认的构造方法。这个属性接收默认的特殊值DEFAULT，会使用默认的实现类org.mybatis.generator.internal.DefaultCommentGenerator-->
+        <!--默认的实现类中提供了两个可选属性，需要通过<property>属性进行配置
+            suppressAllComments:**阻止**生成注释，默认为false
+            suppressDate:**阻止**生成的注释包含时间戳，默认为false
+        -->
+        <commentGenerator type=""/>
+        <jdbcConnection driverClass="" connectionURL=""/>
+        <javaTypeResolver/>
+        <javaModelGenerator targetPackage="" targetProject=""/>
+        <sqlMapGenerator targetPackage="" targetProject=""/>
+        <javaClientGenerator type="" targetPackage="" targetProject=""/>
+        <table tableName=""/>
+    </context>
+</generatorConfiguration>

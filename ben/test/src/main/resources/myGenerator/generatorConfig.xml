@@ -4,8 +4,6 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <!-- ojdbc6.jar已经直接放到项目中,无需指定了,同时mysql驱动包也一样,这里同样无需指定 -->
-    <!-- <classPathEntry location="ojdbc6.jar" /> -->
 
     <context id="mysql22">
         <property name="javaFileEncoding" value="UTF-8"/>
