@@ -41,12 +41,73 @@
             suppressAllComments:**阻止**生成注释，默认为false
             suppressDate:**阻止**生成的注释包含时间戳，默认为false
         -->
-        <commentGenerator type=""/>
+        <commentGenerator type="DEFAULT"/>
+
+        <!--jdbcConnection 用于指定数据库连接信息，该元素必选，并且只能有一个-->
+        <!--该元素还可以接受多个<property>子元素，这里配置的<property>属性都会添加到JDBC驱动的属性中-->
         <jdbcConnection driverClass="" connectionURL=""/>
-        <javaTypeResolver/>
+
+        <!--javaTypeResolver 这个元素的配置用来指定JDBC类型和Java类型如何转换 该元素最多可以配置一个-->
+        <!--该元素提供了一个可选的属性type，和<commentGenerator>比较类型，提供了默认的实现DEFAULT，一般情况下使用默认即可，需要特殊处理的情况可以通过其他元素配置来解决，不建议修改该属性-->
+        <!--该属性还有一个可以配置的<property>元素  可以配置的属性为forceBigDecimals  该属性可以控制是否强制DECIMAL和NUMERIC类型的字段转换为Java类型的java.math.BigDecimal,默认值为false，一般不需要配置-->
+        <!--
+            默认情况下的转换规则为：
+                如果精度>0或者长度>18，就会使用java.math.BigDecimal
+                如果精度=0并且10<=长度<=18，就会使用java.lang.Long
+                如果精度=0并且5<=长度<=9，就会使用java.lang.Integer
+                如果精度=0并且长度<5，就会使用java.lang.Short
+                如果设置为true，那么一定会使用java.math.BigDecimal
+         -->
+        <javaTypeResolver type="DEFAULT"/>
+
+        <!-- javaModelGenerator 该元素必须配置一个，并且最多一个-->
+        <!-- targetPackage:生成实体类存放的包名，一般就是放在该包下。实际还会受到其他配置的影响(<table>中会提到)-->
+        <!-- targetProject:指定目标项目路径，可以是绝对路径或相对路径（如 targetProject="src/main/java"）-->
+        <!--
+                该元素支持以下几个<property>子元素属性：
+                    constructorBased:该属性只对MyBatis3有效，如果true就会使用构造方法入参，如果false就会使用setter方式。默认为false
+                    enableSubPackages:如果true，MBG会根据catalog和schema来生成子包。如果false就会直接用targetPackage属性。默认为false
+                    immutable:该属性用来配置实体类属性是否可变，如果设置为true，那么constructorBased不管设置成什么，都会使用构造方法入参，并且不会生成setter方法。如果为false，实体类属性就可以改变。默认为false
+                    rootClass:设置所有实体类的基类。如果设置，需要使用类的全限定名称。并且如果MBG能够加载rootClass，那么MBG不会覆盖和父类中完全匹配的属性。匹配规则：
+                        属性名完全相同
+                        属性类型相同
+                        属性有getter方法
+                        属性有setter方法
+                    trimStrings:是否对数据库查询结果进行trim操作
+        -->
         <javaModelGenerator targetPackage="" targetProject=""/>
+
+        <!--sqlMapGenerator  该元素可选，最多配置一个
+                如果targetRuntime目标是**MyBatis3**，只有当<javaClientGenerator>需要XML时，该元素必须配置一个。 如果没有配置<javaClientGenerator>，则使用以下的规则：
+        如果指定了一个<sqlMapGenerator>，那么MBG将只生成XML的SQL映射文件和实体类。
+        如果没有指定<sqlMapGenerator>，那么MBG将只生成实体类
+        -->
+        <!--
+            该元素支持<property>子元素，只有一个可以配置的属性
+                enableSubPackages:如果true，MBG会根据catalog和schema来生成子包。如果false就会直接用targetPackage属性。默认为false
+        -->
         <sqlMapGenerator targetPackage="" targetProject=""/>
-        <javaClientGenerator type="" targetPackage="" targetProject=""/>
+
+        <!--
+            该元素可选，最多配置一个 如果不配置该元素，就不会生成Mapper接口
+                type:该属性用于选择一个预定义的客户端代码（可以理解为Mapper接口）生成器，用户可以自定义实现，需要继承org.mybatis.generator.codegen.AbstractJavaClientGenerator类，必选有一个默认的构造方法。 该属性提供了以下预定的代码生成器，首先根据<context>的targetRuntime分成三类：
+                    MyBatis3:
+                        ANNOTATEDMAPPER:基于注解的Mapper接口，不会有对应的XML映射文件
+                        MIXEDMAPPER:XML和注解的混合形式，(上面这种情况中的)SqlProvider注解方法会被XML替代。
+                        XMLMAPPER:所有的方法都在XML中，接口调用依赖XML文件。
+                    MyBatis3Simple:
+                        ANNOTATEDMAPPER:基于注解的Mapper接口，不会有对应的XML映射文件
+                        XMLMAPPER:所有的方法都在XML中，接口调用依赖XML文件。
+                    Ibatis2Java2或**Ibatis2Java5**
+                implementationPackage:如果指定了该属性，实现类就会生成在这个包中
+        -->
+        <!--
+            该元素支持<property>子元素设置的属性: enableSubPackages,exampleMethodVisibility,methodNameCalculator,rootInterface,useLegacyBuilder
+        -->
+        <javaClientGenerator type="" targetPackage="" targetProject="" implementationPackage=""/>
+
+        <!-- 该元素至少要配置一个，可以配置多个。该元素用来配置要通过内省的表。只有配置的才会生成实体类和其他文件 -->
+        <!-- tableName：指定要生成的表名，可以使用SQL通配符匹配多个表 '%' -->
         <table tableName=""/>
     </context>
 </generatorConfiguration>

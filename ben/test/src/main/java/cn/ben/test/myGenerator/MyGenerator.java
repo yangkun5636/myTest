@@ -14,19 +14,17 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 
-public class MybatisGenerator implements CommentGenerator {
+public class MyGenerator implements CommentGenerator {
     private Properties properties;
     private Properties systemPro;
     private boolean suppressDate;
     private boolean suppressAllComments;
     private String currentDateStr;
 
-    public MybatisGenerator() {
+    public MyGenerator() {
         super();
         properties = new Properties();
         systemPro = new Properties();
@@ -36,15 +34,28 @@ public class MybatisGenerator implements CommentGenerator {
     }
 
     public static void main(String[] args) throws Exception {
-        List<String> warnings = new ArrayList<>();
-        boolean overwrite = true;
-        MybatisGenerator generator = new MybatisGenerator();
-        File configFile = new File(generator.getClass().getResource("/").getPath() + "/myGenerator/config2.xml");
-        ConfigurationParser configurationParser = new ConfigurationParser(warnings);
-        Configuration configuration = configurationParser.parseConfiguration(configFile);
-        DefaultShellCallback shellCallback = new DefaultShellCallback(overwrite);
-        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(configuration, shellCallback, warnings);
-        myBatisGenerator.generate(null);
+//        List<String> warnings = new ArrayList<>();
+//        boolean overwrite = true;
+//        MyGenerator generator = new MyGenerator();
+//        File configFile = new File(generator.getClass().getResource("/").getPath() + "/myGenerator/generatorConfig.xml");
+//        ConfigurationParser configurationParser = new ConfigurationParser(warnings);
+//        Configuration configuration = configurationParser.parseConfiguration(configFile);
+//        DefaultShellCallback shellCallback = new DefaultShellCallback(overwrite);
+//        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(configuration, shellCallback, warnings);
+//        myBatisGenerator.generate(null);
+        MyGenerator myGenerator = new MyGenerator();
+        myGenerator.generatorMysql22("myConfig.xml");
+    }
+
+    public void generatorMysql22(String fileName) throws Exception {
+        File file = new File(this.getClass().getResource("/").getPath() + "/myGenerator/" + fileName);
+        ConfigurationParser parser = new ConfigurationParser(null);
+        Configuration configuration = parser.parseConfiguration(file);
+
+        DefaultShellCallback callback = new DefaultShellCallback(true);
+
+        MyBatisGenerator generator = new MyBatisGenerator(configuration, callback, null);
+        generator.generate(null);
     }
 
     private String getDir() {
@@ -56,8 +67,8 @@ public class MybatisGenerator implements CommentGenerator {
     public void addConfigurationProperties(Properties properties) {
         System.out.println("addConfigurationProperties");
         this.properties.putAll(properties);
-        suppressDate = (boolean) properties.get(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE);
-        suppressAllComments = (boolean) properties.get(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_ALL_COMMENTS);
+        suppressDate = Boolean.getBoolean((String) properties.get(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE));
+        suppressAllComments = Boolean.valueOf((String) properties.get(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_ALL_COMMENTS));
 
     }
 

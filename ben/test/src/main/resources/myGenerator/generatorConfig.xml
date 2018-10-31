@@ -7,7 +7,8 @@
 
     <context id="mysql22">
         <property name="javaFileEncoding" value="UTF-8"/>
-        <commentGenerator type="cn.ben.test.myGenerator.MybatisGenerator">
+        <!--<commentGenerator type="cn.ben.test.myGenerator.MyGenerator/>-->
+        <commentGenerator type="DEFAULT">
         </commentGenerator>
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.16.132:3306/mytest" userId="root"
@@ -32,14 +33,14 @@
             <property name="enableSubPackages" value="false"/><!-- 同上 -->
         </javaClientGenerator>
 
-        <table tableName="*"></table>
+        <table tableName="%"></table>
     </context>
 
     <context id="mysql11" defaultModelType="flat" targetRuntime="Mybatis3">
         <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
         <!--<property name="javaFileEncoding" value="UTF-8"/>-->
         <!-- 这里的type里写的是你的实现类的类全路径 -->
-        <!--<commentGenerator type="cn.ben.test.myGenerator.MybatisGenerator">-->
+        <!--<commentGenerator type="cn.ben.test.myGenerator.MyGenerator/>-->
         <!--</commentGenerator>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.16.132:3306/mytest"
                         userId="root" password="root">

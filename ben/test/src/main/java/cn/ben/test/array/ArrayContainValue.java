@@ -1,7 +1,5 @@
 package cn.ben.test.array;
 
-import cn.ben.test.vo.User;
-
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -62,12 +60,5 @@ public class ArrayContainValue {
         Map<String, Object> map = new HashMap<>();
         map.put("name", "name");
         map.put("age", 123);
-        User instance = User.class.newInstance();
-        Field[] declaredFields = User.class.getDeclaredFields();
-        for (Field field : declaredFields) {
-            field.setAccessible(true);
-            field.set(instance, map.get(field.getName()));
-        }
-        System.out.println(instance);
     }
 }

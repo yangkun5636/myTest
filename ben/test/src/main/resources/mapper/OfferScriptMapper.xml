@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ben.test.mapper.OfferScriptMapper">
+  <resultMap id="BaseResultMap" type="cn.ben.test.vo.OfferScript">
+    <id column="offer_script_id" jdbcType="BIGINT" property="offerScriptId" />
+    <result column="offer_script_name" jdbcType="VARCHAR" property="offerScriptName" />
+    <result column="offer_script_desc" jdbcType="VARCHAR" property="offerScriptDesc" />
+    <result column="offer_script_type" jdbcType="VARCHAR" property="offerScriptType" />
+    <result column="offer_id" jdbcType="BIGINT" property="offerId" />
+    <result column="org_id" jdbcType="BIGINT" property="orgId" />
+    <result column="status_cd" jdbcType="VARCHAR" property="statusCd" />
+    <result column="create_staff" jdbcType="BIGINT" property="createStaff" />
+    <result column="update_staff" jdbcType="BIGINT" property="updateStaff" />
+    <result column="status_date" jdbcType="TIMESTAMP" property="statusDate" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from offer_script
+    where offer_script_id = #{offerScriptId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ben.test.vo.OfferScript">
+    insert into offer_script (offer_script_id, offer_script_name, offer_script_desc, 
+      offer_script_type, offer_id, org_id, 
+      status_cd, create_staff, update_staff, 
+      status_date, create_date, update_date, 
+      remark)
+    values (#{offerScriptId,jdbcType=BIGINT}, #{offerScriptName,jdbcType=VARCHAR}, #{offerScriptDesc,jdbcType=VARCHAR}, 
+      #{offerScriptType,jdbcType=VARCHAR}, #{offerId,jdbcType=BIGINT}, #{orgId,jdbcType=BIGINT}, 
+      #{statusCd,jdbcType=VARCHAR}, #{createStaff,jdbcType=BIGINT}, #{updateStaff,jdbcType=BIGINT}, 
+      #{statusDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.ben.test.vo.OfferScript">
+    update offer_script
+    set offer_script_name = #{offerScriptName,jdbcType=VARCHAR},
+      offer_script_desc = #{offerScriptDesc,jdbcType=VARCHAR},
+      offer_script_type = #{offerScriptType,jdbcType=VARCHAR},
+      offer_id = #{offerId,jdbcType=BIGINT},
+      org_id = #{orgId,jdbcType=BIGINT},
+      status_cd = #{statusCd,jdbcType=VARCHAR},
+      create_staff = #{createStaff,jdbcType=BIGINT},
+      update_staff = #{updateStaff,jdbcType=BIGINT},
+      status_date = #{statusDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where offer_script_id = #{offerScriptId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select offer_script_id, offer_script_name, offer_script_desc, offer_script_type, 
+    offer_id, org_id, status_cd, create_staff, update_staff, status_date, create_date, 
+    update_date, remark
+    from offer_script
+    where offer_script_id = #{offerScriptId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select offer_script_id, offer_script_name, offer_script_desc, offer_script_type, 
+    offer_id, org_id, status_cd, create_staff, update_staff, status_date, create_date, 
+    update_date, remark
+    from offer_script
+  </select>
+  <resultMap id="BaseResultMap" type="cn.ben.test.vo.OfferScript">
+    <id column="offer_script_id" jdbcType="BIGINT" property="offerScriptId" />
+    <result column="offer_script_name" jdbcType="VARCHAR" property="offerScriptName" />
+    <result column="offer_script_desc" jdbcType="VARCHAR" property="offerScriptDesc" />
+    <result column="offer_script_type" jdbcType="VARCHAR" property="offerScriptType" />
+    <result column="offer_id" jdbcType="BIGINT" property="offerId" />
+    <result column="org_id" jdbcType="BIGINT" property="orgId" />
+    <result column="status_cd" jdbcType="VARCHAR" property="statusCd" />
+    <result column="create_staff" jdbcType="BIGINT" property="createStaff" />
+    <result column="update_staff" jdbcType="BIGINT" property="updateStaff" />
+    <result column="status_date" jdbcType="TIMESTAMP" property="statusDate" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from offer_script
+    where offer_script_id = #{offerScriptId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ben.test.vo.OfferScript">
+    insert into offer_script (offer_script_id, offer_script_name, offer_script_desc, 
+      offer_script_type, offer_id, org_id, 
+      status_cd, create_staff, update_staff, 
+      status_date, create_date, update_date, 
+      remark)
+    values (#{offerScriptId,jdbcType=BIGINT}, #{offerScriptName,jdbcType=VARCHAR}, #{offerScriptDesc,jdbcType=VARCHAR}, 
+      #{offerScriptType,jdbcType=VARCHAR}, #{offerId,jdbcType=BIGINT}, #{orgId,jdbcType=BIGINT}, 
+      #{statusCd,jdbcType=VARCHAR}, #{createStaff,jdbcType=BIGINT}, #{updateStaff,jdbcType=BIGINT}, 
+      #{statusDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.ben.test.vo.OfferScript">
+    update offer_script
+    set offer_script_name = #{offerScriptName,jdbcType=VARCHAR},
+      offer_script_desc = #{offerScriptDesc,jdbcType=VARCHAR},
+      offer_script_type = #{offerScriptType,jdbcType=VARCHAR},
+      offer_id = #{offerId,jdbcType=BIGINT},
+      org_id = #{orgId,jdbcType=BIGINT},
+      status_cd = #{statusCd,jdbcType=VARCHAR},
+      create_staff = #{createStaff,jdbcType=BIGINT},
+      update_staff = #{updateStaff,jdbcType=BIGINT},
+      status_date = #{statusDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where offer_script_id = #{offerScriptId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select offer_script_id, offer_script_name, offer_script_desc, offer_script_type, 
+    offer_id, org_id, status_cd, create_staff, update_staff, status_date, create_date, 
+    update_date, remark
+    from offer_script
+    where offer_script_id = #{offerScriptId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select offer_script_id, offer_script_name, offer_script_desc, offer_script_type, 
+    offer_id, org_id, status_cd, create_staff, update_staff, status_date, create_date, 
+    update_date, remark
+    from offer_script
+  </select>
+</mapper>
