@@ -12,10 +12,10 @@ import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
 import java.io.File;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Set;
 
 public class MyGenerator implements CommentGenerator {
     private Properties properties;
@@ -58,11 +58,6 @@ public class MyGenerator implements CommentGenerator {
         generator.generate(null);
     }
 
-    private String getDir() {
-        URL resource = this.getClass().getResource("");
-        return resource.getPath();
-    }
-
     @Override
     public void addConfigurationProperties(Properties properties) {
         System.out.println("addConfigurationProperties");
@@ -74,12 +69,39 @@ public class MyGenerator implements CommentGenerator {
 
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
+        if (suppressAllComments) {
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        field.addJavaDocLine("/**");
+        sb.append(" * ");
+        sb.append(introspectedColumn.getRemarks());
+        field.addJavaDocLine(sb.toString());
+        field.addJavaDocLine(" */");
         System.out.println("addFieldComment1");
     }
 
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
         System.out.println("addFieldComment2");
+    }
+
+    /**
+     *
+     * @param topLevelClass
+     *            the top level class
+     * @param introspectedTable
+     */
+    @Override
+    public void addModelClassComment(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        topLevelClass.addAnnotation("/**");
+        topLevelClass.addAnnotation(" * "+introspectedTable.getRemarks());
+        topLevelClass.addAnnotation(" */");
+        topLevelClass.addAnnotation("@Data");
+        topLevelClass.addImportedType("lombok.Data");
+        System.out.println("addModelClassComment");
     }
 
     @Override
@@ -125,5 +147,30 @@ public class MyGenerator implements CommentGenerator {
     @Override
     public void addRootComment(XmlElement xmlElement) {
         System.out.println("addRootComment");
+    }
+
+    @Override
+    public void addGeneralMethodAnnotation(Method method, IntrospectedTable introspectedTable, Set<FullyQualifiedJavaType> imports) {
+        System.out.println("addGeneralMethodAnnotation");
+    }
+
+    @Override
+    public void addGeneralMethodAnnotation(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn, Set<FullyQualifiedJavaType> imports) {
+        System.out.println("addGeneralMethodAnnotation345");
+    }
+
+    @Override
+    public void addFieldAnnotation(Field field, IntrospectedTable introspectedTable, Set<FullyQualifiedJavaType> imports) {
+        System.out.println("addFieldAnnotation34");
+    }
+
+    @Override
+    public void addFieldAnnotation(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn, Set<FullyQualifiedJavaType> imports) {
+        System.out.println("addFieldAnnotation32");
+    }
+
+    @Override
+    public void addClassAnnotation(InnerClass innerClass, IntrospectedTable introspectedTable, Set<FullyQualifiedJavaType> imports) {
+        System.out.println("addClassAnnotation12312");
     }
 }
