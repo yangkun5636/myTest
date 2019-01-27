@@ -47,6 +47,7 @@
         <module>test</module>
         <module>shiroResteasyWebApp</module>
         <module>webApp</module>
+        <module>springBoot</module>
     </modules>
 
     <!--<dependencyManagement>
