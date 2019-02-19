@@ -19,7 +19,6 @@
     <modules>
         <module>DemoCommon</module>
         <module>DemoConsumer</module>
-        <module>DemoEmbedWeb</module>
         <module>DemoProvider</module>
         <module>DemoWeb</module>
     </modules>

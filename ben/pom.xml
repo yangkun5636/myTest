@@ -43,7 +43,6 @@
 	<modules>
         <module>common</module>
         <module>demo</module>
-        <module>embed</module>
         <module>test</module>
         <module>shiroResteasyWebApp</module>
         <module>webApp</module>

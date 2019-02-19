@@ -1,1 +1,0 @@
-%JAVA_HOME%\bin\java -Xmx1024M -Xms128M -jar Polaris_sbfk_web.jar
