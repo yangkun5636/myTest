@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ben</groupId>
-    <artifactId>springboot</artifactId>
+    <artifactId>springBoot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot</name>
+    <name>springBoot</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
