@@ -1,0 +1,22 @@
+server:
+  port: 8802
+  servlet:
+    session:
+      timeout: 30S
+spring:
+  profiles:
+    active: dev
+    include: shiro
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      force-request: true
+      force-response: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  session:
+    redis:
+      namespace: spring:session
+      cleanup-cron: 0 * * * * *

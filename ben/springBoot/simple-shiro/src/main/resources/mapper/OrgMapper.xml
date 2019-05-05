@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ben.simpleshiro.logic.mapper.OrgMapper">
+
+    <select id="list" resultType="com.ben.simpleshiro.logic.bo.Org">
+        select *
+        from s_sys_org
+        where delete_flag = 0
+    </select>
+
+    <select id="page" resultType="com.ben.simpleshiro.logic.bo.Org">
+        select *
+        from s_sys_org
+        where delete_flag = 0
+        order by id
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into s_sys_org(parent, org_name, org_code, type, sort, area, grade, status, address,
+                              security_key, create_id, create_time, update_id, update_time)
+        values ( #{parent,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}
+               , #{type,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{area,jdbcType=VARCHAR}
+               , #{grade,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}
+               , #{securityKey,jdbcType=VARCHAR}, #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+               , #{updateId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="query" resultType="com.ben.simpleshiro.logic.bo.Org">
+        select *
+        from s_sys_org
+        where id = #{id}
+    </select>
+
+    <update id="update">
+        update s_sys_org
+        set org_name    = #{orgName},
+            org_code    = #{orgCode},
+            address=#{address},
+            security_key=#{securityKey}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        update s_sys_org
+        set delete_flag=1
+        where id = #{id}
+    </delete>
+</mapper>

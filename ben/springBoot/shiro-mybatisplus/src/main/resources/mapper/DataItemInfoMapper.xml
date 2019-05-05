@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ben.shiro.mapper.DataItemInfoMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ben.shiro.pojo.bo.DataItemInfo">
+    <result column="id" property="id" />
+        <result column="class_code" property="classCode" />
+        <result column="class_name" property="className" />
+        <result column="code" property="code" />
+        <result column="name" property="name" />
+        <result column="param" property="param" />
+        <result column="flag" property="flag" />
+        <result column="create_id" property="createId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="update_id" property="updateId" />
+        <result column="delete_flag" property="deleteFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        class_code, class_name, code, name, param, flag, create_id, create_time, update_time, update_id, delete_flag
+    </sql>
+
+</mapper>

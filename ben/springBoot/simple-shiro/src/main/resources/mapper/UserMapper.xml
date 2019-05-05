@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ben.simpleshiro.logic.mapper.UserMapper">
+    <select id="list" resultType="com.ben.simpleshiro.logic.bo.User">
+        select *
+        from s_sys_user
+    </select>
+
+    <select id="page" resultType="com.ben.simpleshiro.logic.bo.User">
+        select *
+        from s_sys_user
+        order by id
+    </select>
+
+    <insert id="save" parameterType="com.ben.simpleshiro.logic.bo.User" useGeneratedKeys="true" keyProperty="id">
+        insert into s_sys_user(org_id, dept_no, username, password, nickname, user_no, phone, email, user_type,
+                               photo, wx, qq, status, create_id, create_time,
+                               update_id, update_time)
+        values ( #{orgId,jdbcType=INTEGER}, #{deptNo,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}
+               , #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}
+               , #{userNo,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+               , #{userType,jdbcType=INTEGER}
+               , #{photo,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+               , #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+               , #{updateId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="query" resultType="com.ben.simpleshiro.logic.bo.User">
+        select *
+        from s_sys_user
+        where id = #{id}
+    </select>
+
+    <update id="update">
+        update s_sys_user
+        set username=#{username}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        update s_sys_user
+        set delete_flag=1
+        where id = #{id}
+    </delete>
+</mapper>

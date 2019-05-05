@@ -1,6 +1,6 @@
 /target/
-**/*.iml
+/**/*.iml
 **/target
 /ben/.idea
-/.idea
+/**/.idea
 **/*.mvn
