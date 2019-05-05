@@ -1,51 +1,36 @@
-<?xml version="1.0" encoding= "UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ben.shiro.mapper.PermissionMapper">
 
-    <select id="list" resultType="com.ben.shiro.pojo.bo.Permission">
-        select *
-        from s_sys_permission
-        where delete_flag = 0
+    <!-- 开启二级缓存 -->
+<!--    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ben.shiro.pojo.bo.SysPermission">
+    <result column="id" property="id" />
+        <result column="parent" property="parent" />
+        <result column="name" property="name" />
+        <result column="permission" property="permission" />
+        <result column="sort" property="sort" />
+        <result column="href" property="href" />
+        <result column="target" property="target" />
+        <result column="icon" property="icon" />
+        <result column="is_show" property="isShow" />
+        <result column="comment" property="comment" />
+        <result column="status" property="status" />
+        <result column="create_id" property="createId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_id" property="updateId" />
+        <result column="update_time" property="updateTime" />
+        <result column="delete_flag" property="deleteFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parent, name, permission, sort, href, target, icon, is_show, comment, status, create_id, create_time, update_id, update_time, delete_flag
+    </sql>
+
+    <select id="select">
+        select id, parent, name, permission, sort, href, target, icon, is_show, comment, status, create_id, create_time, update_id, update_time, delete_flag from s_sys_permission
     </select>
-
-    <select id="page" resultType="com.ben.shiro.pojo.bo.Permission">
-        select *
-        from s_sys_permission
-        where delete_flag = 0
-        order by id
-    </select>
-
-    <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into s_sys_permission(parent, name, permission, sort, href, target, icon, is_show, comment, status,
-                                     create_id, create_time, update_id, update_time)
-        values ( #{parent,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}
-               , #{sort,jdbcType=INTEGER}, #{href,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR}
-               , #{icon,jdbcType=VARCHAR}, #{isShow,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}
-               , #{status,jdbcType=INTEGER}, #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
-               , #{updateId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
-    </insert>
-
-    <select id="query" resultType="com.ben.shiro.pojo.bo.Permission">
-        select *
-        from s_sys_permission
-        where id = #{id}
-    </select>
-
-    <update id="update">
-        update s_sys_permission
-        set name       = #{name},
-            permission = #{permission},
-            href=#{href},
-            target=#{target},
-            icon=#{icon}
-        where id = #{id}
-    </update>
-
-    <delete id="delete">
-        update s_sys_permission
-        set delete_flag=1
-        where id = #{id}
-    </delete>
 </mapper>

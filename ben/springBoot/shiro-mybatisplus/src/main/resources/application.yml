@@ -17,12 +17,15 @@ spring:
     suffix: .html
   redis:
     host: 127.0.0.1
-shiro:
-  loginUrl: /login
-mybatis:
+mybatis-plus:
+#  config-location: classpath:mybatisConfiguration.xml
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.ben.shiro.pojo.bo
   configuration:
     auto-mapping-behavior: partial
-    map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    mapUnderscoreToCamelCase: true
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+  global-config:
+    banner: false
+shiro:
+  loginUrl: /login

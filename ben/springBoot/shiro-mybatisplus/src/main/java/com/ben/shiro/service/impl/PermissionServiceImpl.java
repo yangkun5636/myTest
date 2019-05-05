@@ -1,45 +1,26 @@
 package com.ben.shiro.service.impl;
 
-import com.ben.shiro.pojo.bo.Permission;
-import com.ben.shiro.pojo.bo.SimplePage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ben.shiro.mapper.PermissionMapper;
+import com.ben.shiro.pojo.bo.SysPermission;
 import com.ben.shiro.service.PermissionService;
-import com.github.pagehelper.Page;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * @author yangkun
  */
 @Service
-public class PermissionServiceImpl implements PermissionService {
-    @Override
-    public List<Permission> list() {
-        return null;
-    }
+public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, SysPermission> implements PermissionService {
+
+    @Autowired
+    private PermissionMapper mapper;
 
     @Override
-    public Page<Permission> page(SimplePage page) {
-        return null;
-    }
-
-    @Override
-    public Permission save(Permission dict) {
-        return null;
-    }
-
-    @Override
-    public Permission query(Integer id) {
-        return null;
-    }
-
-    @Override
-    public int update(Permission dict) {
-        return 0;
-    }
-
-    @Override
-    public int delete(Integer id) {
-        return 0;
+    public List<SysPermission> getPermissionList() {
+        return mapper.selectByMap(new HashMap<>());
     }
 }

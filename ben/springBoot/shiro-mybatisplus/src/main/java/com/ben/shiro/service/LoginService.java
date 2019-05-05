@@ -1,15 +1,19 @@
 package com.ben.shiro.service;
 
-import com.ben.shiro.pojo.bo.Role;
-import com.ben.shiro.pojo.bo.User;
-import com.ben.shiro.pojo.bo.Permission;
+import com.ben.shiro.pojo.bo.SysPermission;
+import com.ben.shiro.pojo.bo.SysRole;
+import com.ben.shiro.pojo.bo.SysUser;
 
 import java.util.List;
 
+/**
+ * @author yangkun
+ */
 public interface LoginService {
-    User getUserByName(String username);
+    SysUser getUserByName(String username);
 
-    List<Role> getUserRole(User user);
+    List<SysRole> getUserRole(Integer userId);
 
-    List<Permission> getUserPermissions(List<Role> roles);
+    List<SysPermission> getPermissionList(List<String> roleCodes);
+
 }

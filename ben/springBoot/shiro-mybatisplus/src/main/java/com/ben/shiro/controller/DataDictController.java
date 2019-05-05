@@ -1,58 +1,47 @@
 package com.ben.shiro.controller;
 
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ben.shiro.pojo.bo.DataDict;
-import com.ben.shiro.pojo.bo.SimplePage;
 import com.ben.shiro.service.DataDictService;
-import com.github.pagehelper.Page;
+import com.ben.shiro.util.PageUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
+ * <p>
+ * 数据字典 前端控制器
+ * </p>
+ *
  * @author yangkun
+ * @since 2019-04-24
  */
+@Api("数据字典")
 @RestController
-@RequestMapping("/dataDict")
+@RequestMapping("/data-dict")
 public class DataDictController {
 
     @Autowired
-    private DataDictService service;
+    private DataDictService dataDictService;
 
-    @RequestMapping("/list")
-    @RequiresRoles("dataDict")
+    @ApiOperation("数据字典分页查询")
+    @GetMapping("/listPage")
     @RequiresPermissions("dataDict:list")
-    public List<DataDict> list() {
-        return service.list();
-    }
-
-    @RequestMapping("/page")
-    public Page<DataDict> page(SimplePage page) {
-        return service.page(page);
-    }
-
-    @RequestMapping("/save")
-    public DataDict save(DataDict dict) {
-        return service.save(dict);
-    }
-
-    @RequestMapping("/query")
-    public DataDict query(Integer id) {
-        return service.query(id);
-    }
-
-    @RequestMapping("/update")
-    public int update(DataDict dict) {
-        return service.update(dict);
-    }
-
-    @RequestMapping("/delete")
-    public int delete(Integer id) {
-        return service.delete(id);
+    public IPage listPage(HttpServletRequest request) {
+        SecurityUtils.getSubject().checkPermission("dataDict:list");
+        IPage<DataDict> page = dataDictService.query().orderByAsc("id").page(PageUtil.getPageParam(request));
+        return page;
     }
 
 
 }
+

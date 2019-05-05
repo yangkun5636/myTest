@@ -1,24 +1,17 @@
 package com.ben.shiro.mapper;
 
 import com.ben.shiro.pojo.bo.DataDict;
-import com.github.pagehelper.Page;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface DataDictMapper {
-
-    String select1();
-
-    List<DataDict> list();
-
-    Page<DataDict> page();
-
-    int save(DataDict dict);
-
-    DataDict query(Integer id);
-
-    int update(DataDict dict);
-
-    int delete(Integer id);
+/**
+ * <p>
+ * 数据字典 Mapper 接口
+ * </p>
+ *
+ * @author yangkun
+ * @since 2019-04-24
+ */
+public interface DataDictMapper extends BaseMapper<DataDict> {
 
 }

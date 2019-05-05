@@ -1,7 +1,8 @@
 package com.ben.shiro.controller;
 
-import com.ben.shiro.pojo.bo.User;
+import com.ben.shiro.pojo.bo.SysUser;
 import com.ben.shiro.service.LoginService;
+import com.ben.shiro.service.SysUserService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -32,7 +33,7 @@ public class LoginController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(String username, String password, Model model) {
         log.info("username:{};password:{}", username, password);
-        User user;
+        SysUser user;
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);

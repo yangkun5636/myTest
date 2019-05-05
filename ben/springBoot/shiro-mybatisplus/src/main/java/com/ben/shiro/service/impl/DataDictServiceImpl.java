@@ -1,64 +1,27 @@
 package com.ben.shiro.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ben.shiro.mapper.DataDictMapper;
 import com.ben.shiro.pojo.bo.DataDict;
-import com.ben.shiro.pojo.bo.SimplePage;
 import com.ben.shiro.service.DataDictService;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
+ * <p>
+ * 数据字典 服务实现类
+ * </p>
+ *
  * @author yangkun
+ * @since 2019-04-24
  */
 @Service
-public class DataDictServiceImpl implements DataDictService {
-
-    @Autowired
-    private DataDictMapper mapper;
+public class DataDictServiceImpl extends ServiceImpl<DataDictMapper, DataDict> implements DataDictService {
 
     @Override
-    public String string() {
-        return "hello this is dataDictService string";
-    }
+    public IPage<DataDict> listPage() {
 
-    @Override
-    public String select1() {
-        return mapper.select1();
-    }
-
-    @Override
-    public List<DataDict> list() {
-        return mapper.list();
-    }
-
-    @Override
-    public Page<DataDict> page(SimplePage page) {
-        PageHelper.startPage(page.getPageNum(), page.getPageSize());
-        return mapper.page();
-    }
-
-    @Override
-    public DataDict save(DataDict dict) {
-        int save = mapper.save(dict);
-        return dict;
-    }
-
-    @Override
-    public DataDict query(Integer id) {
-        return mapper.query(id);
-    }
-
-    @Override
-    public int update(DataDict dict) {
-        return mapper.update(dict);
-    }
-
-    @Override
-    public int delete(Integer id) {
-        return mapper.delete(id);
+        return null;
     }
 }

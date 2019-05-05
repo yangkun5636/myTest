@@ -1,31 +1,45 @@
-<?xml version="1.0" encoding= "UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ben.shiro.mapper.LoginMapper">
 
-    <select id="getUserByName" resultType="com.ben.shiro.pojo.bo.User">
-        select *
-        from s_sys_user
-        where username = #{username}
-    </select>
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 
-    <select id="getUserRole" resultType="com.ben.shiro.pojo.bo.Role">
-        select a.id, org_id, role_name, a.role_code, role_type, data_scope, status
+    <select id="getUserRole" resultType="com.ben.shiro.pojo.bo.SysRole">
+        select a.id, a.org_id, a.role_name, a.role_code, role_type, status, create_id, create_time, update_id, update_time, delete_flag
         from s_sys_role a
-                 left join s_sys_user_role b on a.id = b.role_id and b.user_id = #{id}
-        where a.delete_flag = 0
+                 left join s_sys_user_role b on a.id = b.role_id
+        where b.user_id = #{userId}
     </select>
 
-    <select id="getUserPermissions" resultType="com.ben.shiro.pojo.bo.Permission">
-        select a.id, parent, name, permission, sort, href, target, icon, is_show, comment, status
-        from s_sys_permission a
-        left join s_sys_role_permission b on a.id=b.permission_id
-        where a.delete_flag=0 and b.role_id in
-        <foreach collection="list" item="role" separator="," open="(" close=")">
-            #{role.id}
+    <select id="getUserByName" resultType="com.ben.shiro.pojo.bo.SysUser">
+        select id,
+               org_id,
+               username,
+               password,
+               phone,
+               email,
+               wx,
+               qq,
+               status,
+               create_id,
+               create_time,
+               update_id,
+               update_time,
+               delete_flag
+        from s_sys_user
+        where delete_flag = '0'
+          and username = #{username}
+    </select>
+
+    <select id="getPermissionList" resultType="com.ben.shiro.pojo.bo.SysPermission">
+        select p.id, p.name, p.permission, comment, status, create_id, create_time, update_id, update_time, delete_flag
+        from s_sys_permission p
+        inner join s_sys_role_permission rp on rp.role_id = p.id
+        where p.delete_flag='0' and rp.role_code in
+        <foreach collection="roleCodes" open="(" close=")" separator="," item="roleCode">
+            #{roleCode}
         </foreach>
     </select>
-
 
 </mapper>
