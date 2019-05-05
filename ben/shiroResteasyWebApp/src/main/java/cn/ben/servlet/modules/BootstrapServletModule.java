@@ -1,14 +1,12 @@
 package cn.ben.servlet.modules;
 
-import org.apache.shiro.guice.web.GuiceShiroFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.inject.servlet.ServletModule;
-import cn.ben.rest.SampleRestModule;
 import cn.ben.servlet.config.GuiceRestEasyFilterDispatcher;
 import cn.ben.shiro.modules.BootstrapShiroModule;
 import cn.ben.shiro.modules.ShiroAnnotationsModule;
+import com.google.inject.servlet.ServletModule;
+import org.apache.shiro.guice.web.GuiceShiroFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class bootstraps the application Servlet (JBoss RestEasy 3). If you want

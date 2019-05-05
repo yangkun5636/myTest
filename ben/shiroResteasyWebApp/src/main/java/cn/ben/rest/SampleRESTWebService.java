@@ -1,14 +1,14 @@
 package cn.ben.rest;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+import com.google.inject.servlet.RequestScoped;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
-import com.google.inject.servlet.RequestScoped;
 
 @RequestScoped
 @Path("hello")

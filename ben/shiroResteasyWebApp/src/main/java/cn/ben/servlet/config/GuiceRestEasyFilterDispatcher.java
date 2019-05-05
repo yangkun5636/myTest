@@ -1,13 +1,7 @@
 package cn.ben.servlet.config;
 
-import java.lang.reflect.Type;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.ws.rs.ext.Provider;
-
+import com.google.inject.Binding;
+import com.google.inject.Injector;
 import org.jboss.resteasy.plugins.guice.GuiceResourceFactory;
 import org.jboss.resteasy.plugins.server.servlet.FilterDispatcher;
 import org.jboss.resteasy.spi.Registry;
@@ -17,8 +11,12 @@ import org.jboss.resteasy.util.GetRestful;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.Binding;
-import com.google.inject.Injector;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.ws.rs.ext.Provider;
+import java.lang.reflect.Type;
 
 @Singleton
 public class GuiceRestEasyFilterDispatcher extends FilterDispatcher {

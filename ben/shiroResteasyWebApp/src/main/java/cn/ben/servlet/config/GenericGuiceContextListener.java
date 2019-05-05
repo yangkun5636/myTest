@@ -1,9 +1,9 @@
 package cn.ben.servlet.config;
 
+import cn.ben.servlet.modules.BootstrapServletModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
-import cn.ben.servlet.modules.BootstrapServletModule;
 
 /**
  * This class goes mapped in web.xml and is used to inject Google Guice's Injector into the Web Application Context.

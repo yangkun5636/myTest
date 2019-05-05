@@ -1,18 +1,9 @@
 package cn.ben.shiro.modules;
 
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
-import org.apache.shiro.authz.annotation.RequiresGuest;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.authz.annotation.RequiresUser;
-import org.apache.shiro.authz.aop.AuthenticatedAnnotationMethodInterceptor;
-import org.apache.shiro.authz.aop.GuestAnnotationMethodInterceptor;
-import org.apache.shiro.authz.aop.PermissionAnnotationMethodInterceptor;
-import org.apache.shiro.authz.aop.RoleAnnotationMethodInterceptor;
-import org.apache.shiro.authz.aop.UserAnnotationMethodInterceptor;
-
 import com.google.inject.AbstractModule;
 import com.google.inject.matcher.Matchers;
+import org.apache.shiro.authz.annotation.*;
+import org.apache.shiro.authz.aop.*;
 
 public class ShiroAnnotationsModule extends AbstractModule{
 

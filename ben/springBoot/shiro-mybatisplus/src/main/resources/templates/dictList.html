@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>dictList</title>
+</head>
+<body>
+<h2>用户列表</h2>
+<div class="container">
+    <div class="form-inline">
+        <table class="table">
+            <tr class="table-striped">
+                <th>ID</th>
+                <th>parent</th>
+                <th>code</th>
+                <th>name</th>
+                <th>status</th>
+            </tr>
+            <tr th:each="dict:${list}">
+                <td><span th:text="${dict.id}"></span></td>
+                <td><span th:text="${dict.parent}"></span></td>
+                <td><span th:text="${dict.code}"></span></td>
+                <td><span th:text="${dict.name}"></span></td>
+                <td><span th:text="${dict.status}"></span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+
+    <ul>
+        <li th:each="dict:${list}">
+            <span th:text="${dict.id}"></span>-
+            <span th:text="${dict.parent}"></span>-
+            <span th:text="${dict.code}"></span>-
+            <span th:text="${dict.name}"></span>
+            <span th:text="${dict.status}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

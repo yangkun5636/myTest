@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ben.shiro.mapper.DataDictMapper">
+
+    <select id="select1" resultType="string">
+        select 1
+        from dual
+    </select>
+
+    <select id="list" resultType="com.ben.shiro.pojo.bo.DataDict">
+        select *
+        from b_data_dict
+        where delete_flag = 0
+    </select>
+
+    <select id="page" resultType="com.ben.shiro.pojo.bo.DataDict">
+        select *
+        from b_data_dict
+        where delete_flag = 0
+        order by id
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into b_data_dict(parent, code, name, status, create_id, create_time,
+                                update_id, update_time)
+        values ( #{parent,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+               , #{status,jdbcType=INTEGER}
+               , #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=INTEGER}
+               , #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="query" resultType="com.ben.shiro.pojo.bo.DataDict">
+        select *
+        from b_data_dict
+        where id = #{id}
+    </select>
+
+    <update id="update">
+        update b_data_dict
+        set code=#{code},
+            name=#{name}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        update b_data_dict
+        set delete_flag=1
+        where id = #{id}
+    </delete>
+</mapper>

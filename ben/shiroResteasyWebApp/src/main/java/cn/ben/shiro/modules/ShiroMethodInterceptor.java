@@ -1,10 +1,10 @@
 package cn.ben.shiro.modules;
 
-import java.lang.reflect.Method;
-import java.util.logging.Logger;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+
+import java.lang.reflect.Method;
+import java.util.logging.Logger;
 /**
  * 
  * @author pablo.biagioli

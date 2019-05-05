@@ -1,19 +1,17 @@
 package cn.ben.servlet.modules;
 
+import cn.ben.servlet.config.GenericBootstrapConstants;
+import com.google.inject.AbstractModule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.ws.rs.Path;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-
-import javax.ws.rs.Path;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.inject.AbstractModule;
-import cn.ben.servlet.config.GenericBootstrapConstants;
 
 public class BootstrapRestPackagesModule extends AbstractModule{
 

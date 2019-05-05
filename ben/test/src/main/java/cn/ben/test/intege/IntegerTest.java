@@ -1,11 +1,11 @@
 package cn.ben.test.intege;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
 public class IntegerTest {
     public static void main(String[] args) throws Exception {
         swapTest();
+        integerCache();
     }
 
     public static void integerCache() throws Exception {
@@ -28,9 +28,12 @@ public class IntegerTest {
     }
 
     public static void swap(Integer a, Integer b) throws Exception {
-        Field value = Integer.class.getDeclaredField("value");
-        value.setAccessible(true);
-        value.set(a,b);
-        value.set(b,a);
+        int temp = a;
+        Field valuea = a.getClass().getDeclaredField("value");
+        Field valueb = a.getClass().getDeclaredField("value");
+        valuea.setAccessible(true);
+        valuea.set(a, b);
+        valueb.setAccessible(true);
+        valueb.set(b, temp);
     }
 }

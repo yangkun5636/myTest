@@ -1,15 +1,14 @@
 package cn.ben.shiro.modules;
 
-import javax.servlet.ServletContext;
-
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.config.Ini;
 import org.apache.shiro.guice.web.ShiroWebModule;
 import org.apache.shiro.realm.text.IniRealm;
 
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
+import javax.servlet.ServletContext;
 
 /**
  * This Module loads a Sample IniRealm. This is also a Guice's PrivateModule.<br> 

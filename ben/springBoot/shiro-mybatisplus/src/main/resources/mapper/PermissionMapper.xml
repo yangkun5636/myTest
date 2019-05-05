@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ben.shiro.mapper.PermissionMapper">
+
+    <select id="list" resultType="com.ben.shiro.pojo.bo.Permission">
+        select *
+        from s_sys_permission
+        where delete_flag = 0
+    </select>
+
+    <select id="page" resultType="com.ben.shiro.pojo.bo.Permission">
+        select *
+        from s_sys_permission
+        where delete_flag = 0
+        order by id
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into s_sys_permission(parent, name, permission, sort, href, target, icon, is_show, comment, status,
+                                     create_id, create_time, update_id, update_time)
+        values ( #{parent,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}
+               , #{sort,jdbcType=INTEGER}, #{href,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR}
+               , #{icon,jdbcType=VARCHAR}, #{isShow,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}
+               , #{status,jdbcType=INTEGER}, #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+               , #{updateId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="query" resultType="com.ben.shiro.pojo.bo.Permission">
+        select *
+        from s_sys_permission
+        where id = #{id}
+    </select>
+
+    <update id="update">
+        update s_sys_permission
+        set name       = #{name},
+            permission = #{permission},
+            href=#{href},
+            target=#{target},
+            icon=#{icon}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        update s_sys_permission
+        set delete_flag=1
+        where id = #{id}
+    </delete>
+</mapper>
