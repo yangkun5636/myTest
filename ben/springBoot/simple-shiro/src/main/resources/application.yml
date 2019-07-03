@@ -3,6 +3,10 @@ spring:
     url: jdbc:mysql://127.0.0.1:3307/ben?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
     password: 123456
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    database: 1
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
@@ -13,3 +17,5 @@ shiro:
   successUrl: /dataDict/list
   web:
     enabled: true
+#server:
+#  port: 8802

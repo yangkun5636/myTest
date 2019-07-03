@@ -1,5 +1,6 @@
-package com.ben.simpleshiro.config.shiro;
+package com.ben.simpleshiro.config.permission;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
 import org.springframework.stereotype.Component;
 
@@ -10,12 +11,12 @@ import java.io.IOException;
 /**
  * @author yangkun
  */
-@Component
+@Slf4j
 public class MyPermissionFilter extends PermissionsAuthorizationFilter {
     @Override
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws IOException {
         System.out.println("===================MyPermissionFilter====================");
-        return super.isAccessAllowed(request, response, mappedValue);
+        return true;
     }
 
 }
