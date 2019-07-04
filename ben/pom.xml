@@ -8,6 +8,7 @@
     <artifactId>parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>ben</name>
 
     <properties>
         <parent_version>1.0.0-SNAPSHOT</parent_version>

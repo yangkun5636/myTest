@@ -1,19 +1,13 @@
 package cn.ben.test.binary;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Random;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-/**
- * @TIME 2018/8/7 14:31
- * @User yangkun
- * @DESCRIPTION
- */
 public class BinaryTree {
 
     /**
@@ -38,8 +32,8 @@ public class BinaryTree {
      */
     private static List<Node> getBinaryTree(int[] array) {
         List<Node> list = new LinkedList<>();
-        for (int i = 0; i < array.length; i++) {
-            Node node = new Node(array[i]);
+        for (int value : array) {
+            Node node = new Node(value);
             list.add(node);
         }
         for (int i = 0; i < list.size() / 2 - 1; i++) {
@@ -55,11 +49,11 @@ public class BinaryTree {
         int lastParentIndex = array.length / 2 - 1;
         // 左孩子
         list.get(lastParentIndex).setLeft(list
-                .get(lastParentIndex * 2 + 1));
+            .get(lastParentIndex * 2 + 1));
         // 右孩子,如果数组的长度为奇数才建立右孩子
         if (array.length % 2 == 1) {
             list.get(lastParentIndex).setRight(list
-                    .get(lastParentIndex * 2 + 2));
+                .get(lastParentIndex * 2 + 2));
         }
         return list;
     }
@@ -75,8 +69,9 @@ public class BinaryTree {
     }
 
     private static void printNode(Node node, int max, int deep) {
-        if (node == null)
+        if (node == null) {
             return;
+        }
         for (int i = 0; i < max - deep; i++) {
             System.out.print("\t");
         }
@@ -108,13 +103,13 @@ public class BinaryTree {
                 nlast = tmpNode.getRight();
             }
             if (b) {
-                for (int i = 0; i < Math.pow(2,deep-1); i++) {
+                for (int i = 0; i < Math.pow(2, deep - 1); i++) {
                     System.out.print(" ");
                 }
                 b = false;
             }
             System.out.print(tmpNode.getValue());
-            for (int i=0;i<Math.pow(2,deep)-1;i++){
+            for (int i = 0; i < Math.pow(2, deep) - 1; i++) {
                 System.out.print(" ");
             }
             if (tmpNode.equals(last)) {
@@ -146,8 +141,9 @@ public class BinaryTree {
      * 先序遍历
      */
     public static void preTraver(Node node) {
-        if (null == node)
+        if (null == node) {
             return;
+        }
         System.out.print(node.getValue() + "\t");
         preTraver(node.getLeft());
         preTraver(node.getRight());
@@ -157,8 +153,9 @@ public class BinaryTree {
      * 中序
      */
     public static void midTraver(Node node) {
-        if (null == node)
+        if (null == node) {
             return;
+        }
         midTraver(node.getLeft());
         System.out.print(node.getValue() + "\t");
         midTraver(node.getRight());
@@ -168,8 +165,9 @@ public class BinaryTree {
      * 后序
      */
     public static void aftTraver(Node node) {
-        if (null == node)
+        if (null == node) {
             return;
+        }
         aftTraver(node.getLeft());
         aftTraver(node.getRight());
         System.out.println(node.getValue());
@@ -182,6 +180,7 @@ public class BinaryTree {
 @Setter
 @ToString
 class Node {
+
     private Node left;
     private Node right;
     private int value;
@@ -191,11 +190,8 @@ class Node {
     }
 }
 
-/**                                   n
-                1                     5     16
-        2               3             4     8          15
-    4       5       6       7         3     4          7
-  1   2   2   3   2   3   2   3       2     2          3
- 1 2 3 4 5 6 7 8 1 2 3 4 5 6 7        1     1          1
-                                      n     2的n-1方    2的n方-1
+/**
+ * n 1                     5     16 2               3             4     8          15 4       5       6       7
+ * 3     4          7 1   2   2   3   2   3   2   3       2     2          3 1 2 3 4 5 6 7 8 1 2 3 4 5 6 7        1
+ * 1          1 n     2的n-1方    2的n方-1
  */
