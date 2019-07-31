@@ -1,0 +1,6 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+mybatis:
+  mapper-locations: classpath:mapper/*
